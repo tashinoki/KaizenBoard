@@ -1,0 +1,9 @@
+@startuml
+
+User "1" --> "many" Project
+User "1" --> "many" Task
+Task "1" *-- "many" TaskLog
+Project "1" o-- "1" ProjectId
+Project "1" *-- "many" ProjectTag
+Project "1" *-- "many" Task
+@enduml
