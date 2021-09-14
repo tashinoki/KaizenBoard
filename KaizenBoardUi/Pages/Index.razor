@@ -1,7 +1,18 @@
 ﻿@page "/"
+@inject HttpClient Http
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+<button @onclick="HandleClick">button</button>
+
+@code {
+    private const string ApiEndpoint = "https://localhost:5001/weatherforecast";
+
+    private async Task HandleClick()
+    {
+        var response = await Http.GetAsync(ApiEndpoint);
+    }
+}

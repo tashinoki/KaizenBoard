@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KanbanDomain.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace KanbanDomain
 {
@@ -32,10 +34,13 @@ namespace KanbanDomain
                 options.AddPolicy(MyAllowSpecificOrigins,
                     builders =>
                     {
-                        builders.WithOrigins("https://localhost:44391/");
+                        builders.WithOrigins("https://localhost:44391");
                     });
             });
             services.AddControllers();
+            services.AddDbContext<KanbanContext>(builder =>
+                builder.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
