@@ -15,6 +15,8 @@ namespace KanbanDomain
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +27,14 @@ namespace KanbanDomain
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                    builders =>
+                    {
+                        builders.WithOrigins("https://localhost:44391/");
+                    });
+            });
             services.AddControllers();
         }
 
@@ -39,6 +49,8 @@ namespace KanbanDomain
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 
