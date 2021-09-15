@@ -13,5 +13,18 @@ namespace KanbanDomain.Context
         { }
 
         public DbSet<Kanban> Kanbans { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSnakeCaseNamingConvention();
+            base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Kanban>()
+                .Property(k => k.Id)
+                .IsRequired();
+        }
     }
 }
