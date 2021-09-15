@@ -10,7 +10,9 @@ namespace KanbanDomain.Context
     public class KanbanContext: DbContext
     {
         public KanbanContext(DbContextOptions<KanbanContext> options): base(options)
-        { }
+        {
+            Database
+        }
 
         public DbSet<Kanban> Kanbans { get; set; }
 
