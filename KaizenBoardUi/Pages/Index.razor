@@ -9,10 +9,11 @@ Welcome to your new app.
 <button @onclick="HandleClick">button</button>
 
 @code {
-    private const string ApiEndpoint = "https://localhost:5001/weatherforecast";
+    private const string ApiEndpoint = "https://localhost:5001/fetchkizenboard";
 
     private async Task HandleClick()
     {
         var response = await Http.GetAsync(ApiEndpoint);
+        var content = await response.Content.ReadAsStringAsync();
     }
 }
