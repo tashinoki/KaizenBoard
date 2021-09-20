@@ -34,7 +34,7 @@ namespace KanbanDomain
                 options.AddPolicy(MyAllowSpecificOrigins,
                     builders =>
                     {
-                        builders.WithOrigins("https://localhost:44391");
+                        builders.WithOrigins("https://localhost:44398");
                     });
             });
             services.AddControllers();
