@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Contract.Models
+namespace KanbanDomain.Entity
 {
-    public class Board
+    public class Kanban
     {
         public Guid Id { get; set; }
 
-        public string Title { get; set; }
+        public string Name { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }
