@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace Contract.Entity
 {
-    public class KanbanBoard
+    public class Member
     {
         public Guid Id { get; set; }
 
-        public string Title { get; set; }
-
-        public IList<Kanban> Kanbans { get; set; }
-
-        public IList<Member> Members { get; set; }
+        public string HandleName { get; set; }
     }
 }

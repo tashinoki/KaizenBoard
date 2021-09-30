@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Contract.Entity
 {
@@ -24,6 +20,13 @@ namespace Contract.Entity
         {
             FinishedAt = DateTimeOffset.UtcNow;
             IsFinised = true;
+        }
+
+        public TimeSpan Elapsed()
+        {
+            // 開始時刻と終了時刻の大商比較はしたいけど
+            // このメソッドでやるべきか？
+            return FinishedAt.Subtract(StartedAt);
         }
     }
 }

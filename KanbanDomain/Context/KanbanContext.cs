@@ -23,6 +23,7 @@ namespace KanbanDomain.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // add constraints on columns
             modelBuilder.Entity<Kanban>()
                 .Property(k => k.Id)
                 .IsRequired();

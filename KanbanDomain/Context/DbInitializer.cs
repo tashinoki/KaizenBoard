@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using KanbanDomain.Entity;
+using Contract.Entity;
 
 namespace KanbanDomain.Context
 {
@@ -18,10 +16,17 @@ namespace KanbanDomain.Context
                 return;   // DB has been seeded
             }
 
+            var kanbanBoard = new KanbanBoard
+            {
+                Id = new Guid(),
+                Title = "サンプル",
+
+            };
             var kanban = new Kanban
             {
                 Id = new Guid(),
-                Title = "テスト",
+                Name = "テスト",
+                Sequence = 0,
                 IsDeleted = false
             };
 
