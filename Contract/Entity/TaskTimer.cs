@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contract.Entitys
+namespace Contract.Entity
 {
     public class TaskTimer
     {

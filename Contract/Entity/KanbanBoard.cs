@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contract.Models
+namespace Contract.Entity
 {
     public class KanbanBoard
     {
         public Guid Id { get; set; }
 
         public string Title { get; set; }
+
+        public IList<Kanban> Kanbans { get; set; }
     }
 }

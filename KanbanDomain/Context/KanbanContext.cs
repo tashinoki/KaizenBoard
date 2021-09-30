@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KanbanDomain.Entity;
 using Microsoft.EntityFrameworkCore;
+using Contract.Entity;
 
 namespace KanbanDomain.Context
 {
