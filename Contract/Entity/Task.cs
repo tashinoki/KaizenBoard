@@ -16,9 +16,13 @@ namespace Contract.Entity
 
         public void TotalTime()
         {
-            var sum = timers
+            var sum = Timers
                     .Where(t => t.IsFinised)
                     .Select(t => t.Elapsed());
         }
+
+        public Guid KanbanId { get; set; }
+
+        public Kanban Kanban { get; set; }
     }
 }
