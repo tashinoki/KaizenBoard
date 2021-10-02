@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Contract.Entity
 {
-    public class Task
+    public class MyTask
     {
         public Guid Id { get; set; }
 
@@ -13,8 +13,8 @@ namespace Contract.Entity
         public IList<TaskTimer> Timers { get;  set; }
 
         public IList<Member> Members { get; set; }
-
-        public void TotalTime()
+        
+        public void TotalElapsedTime()
         {
             var sum = Timers
                     .Where(t => t.IsFinised)

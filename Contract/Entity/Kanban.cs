@@ -14,5 +14,7 @@ namespace Contract.Entity
         public int Sequence { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public IReadOnlyList<MyTask> Tasks { get; set; }
     }
 }

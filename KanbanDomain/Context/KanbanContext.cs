@@ -15,6 +15,14 @@ namespace KanbanDomain.Context
 
         public DbSet<Kanban> Kanbans { get; set; }
 
+        public DbSet<Member> Members { get; set; }
+
+        public DbSet<KanbanBoard> KanbanBoards { get; set; }
+
+        public DbSet<TaskTimer> TaskTimers { get; set; }
+
+        public DbSet<MyTask> MyTasks { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSnakeCaseNamingConvention();
@@ -26,6 +34,10 @@ namespace KanbanDomain.Context
             // add constraints on columns
             modelBuilder.Entity<Kanban>()
                 .Property(k => k.Id)
+                .IsRequired();
+
+            modelBuilder.Entity<Member>()
+                .Property(m => m.Id)
                 .IsRequired();
         }
     }

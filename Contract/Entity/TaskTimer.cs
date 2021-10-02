@@ -4,12 +4,12 @@ namespace Contract.Entity
 {
     public class TaskTimer
     {
+        public Guid Id { get; set; }
         public DateTimeOffset StartedAt { get; private set; }
 
         public DateTimeOffset FinishedAt { get; private set; }
 
         public bool IsFinised { get; private set; } = false;
-
 
         public void Start()
         {
