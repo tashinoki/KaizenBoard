@@ -4,6 +4,8 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KanbanDomain.Context;
+using Contract.Entity;
 
 namespace KanbanDomain.UseCases
 {
@@ -11,16 +13,23 @@ namespace KanbanDomain.UseCases
     [Route("[controller]")]
     public class FetchKaizenBoard: ControllerBase
     {
+        private const string MemberId = "7F1C561F-5354-4241-2FA0-08D98585397B";
+        private readonly KanbanContext _context;
         private readonly ILogger<FetchKaizenBoard> _logger;
-        public FetchKaizenBoard(ILogger<FetchKaizenBoard> logger)
+     
+        public FetchKaizenBoard(
+            ILogger<FetchKaizenBoard> logger,
+            KanbanContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet]
-        public IEnumerable<int> Get()
+        public async Task<Member> Get()
         {
-            return Enumerable.Range(0, 10);
+            var member = await _context.Members.FindAsync(MemberId);
+            return member;
         }
     }
 }
