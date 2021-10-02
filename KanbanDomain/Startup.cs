@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KanbanDomain.Context;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace KanbanDomain
 {
@@ -38,6 +39,9 @@ namespace KanbanDomain
                     });
             });
             services.AddControllers();
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(option =>
+                    option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddDbContext<KanbanContext>(builder =>
                 builder.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

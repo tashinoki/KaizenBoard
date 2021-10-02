@@ -6,19 +6,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using KanbanDomain.Context;
 using Contract.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace KanbanDomain.UseCases
 {
     [ApiController]
     [Route("[controller]")]
-    public class FetchKaizenBoard: ControllerBase
+    public class KaizenBoardController: ControllerBase
     {
-        private const string MemberId = "7F1C561F-5354-4241-2FA0-08D98585397B";
+        private readonly string MemberId = "7F1C561F-5354-4241-2FA0-08D98585397B";
         private readonly KanbanContext _context;
-        private readonly ILogger<FetchKaizenBoard> _logger;
+        private readonly ILogger<KaizenBoardController> _logger;
      
-        public FetchKaizenBoard(
-            ILogger<FetchKaizenBoard> logger,
+        public KaizenBoardController(
+            ILogger<KaizenBoardController> logger,
             KanbanContext context)
         {
             _logger = logger;
@@ -28,7 +29,10 @@ namespace KanbanDomain.UseCases
         [HttpGet]
         public async Task<Member> Get()
         {
-            var member = await _context.Members.FindAsync(MemberId);
+            var member = await _context.Members
+                .Where(m => m.Id == new Guid(MemberId))
+                .Include(m => m.KanbanBoards)
+                .FirstOrDefaultAsync();
             return member;
         }
     }

@@ -19,7 +19,7 @@ Welcome to your new app.
 
     protected async override void OnInitialized()
     {
-        var response = await _client.GetAsync("/weatherforecast");
+        var response = await _client.GetAsync("/kaizenboard");
         var content = await response.Content.ReadAsStringAsync();
     }
 }
