@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using Contract.Entity;
 
 namespace KanbanDomain.Context
@@ -11,7 +12,7 @@ namespace KanbanDomain.Context
             context.Database.EnsureCreated();
 
             // Look for any students.
-            if (context.Kanbans.Any())
+            if (context.KanbanBoards.Any())
             {
                 return;   // DB has been seeded
             }
@@ -30,7 +31,20 @@ namespace KanbanDomain.Context
                 IsDeleted = false
             };
 
+            await context.KanbanBoards.AddAsync(kanbanBoard);
             await context.Kanbans.AddAsync(kanban);
+
+            var member = new Member
+            {
+                Id = new Guid(),
+                HandleName = "kino",
+                MemberId = "kino",
+                KanbanBoards = new List<KanbanBoard> { kanbanBoard },
+                IsDeleted = false
+            };
+
+            await context.AddAsync(member);
+
             context.SaveChanges();
         }
     }

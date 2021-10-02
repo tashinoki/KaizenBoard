@@ -4,14 +4,16 @@ using KanbanDomain.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KanbanDomain.Migrations
 {
     [DbContext(typeof(KanbanContext))]
-    partial class KanbanContextModelSnapshot : ModelSnapshot
+    [Migration("20211002085812_AddMemberProperty")]
+    partial class AddMemberProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,9 +89,17 @@ namespace KanbanDomain.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("is_deleted");
 
+                    b.Property<Guid>("KanbanBoardId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("kanban_board_id");
+
                     b.Property<string>("MemberId")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("member_id");
+
+                    b.Property<Guid>("MyTaskId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("my_task_id");
 
                     b.HasKey("Id")
                         .HasName("pk_members");

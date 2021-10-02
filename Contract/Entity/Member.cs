@@ -11,5 +11,13 @@ namespace Contract.Entity
         public Guid Id { get; set; }
 
         public string HandleName { get; set; }
+
+        public string MemberId { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public IReadOnlyList<KanbanBoard> KanbanBoards { get; set; }
+
+        public IReadOnlyList<MyTask> MyTasks { get; set; }
     }
 }
