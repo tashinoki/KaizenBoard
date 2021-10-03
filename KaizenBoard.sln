@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanbanDomain", "KanbanDomain\KanbanDomain.csproj", "{C8F4E377-F05F-43B9-9BD0-B3A0AD15D2F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaizenBoardFront", "KaizenBoardFront\KaizenBoardFront.csproj", "{691830B9-A368-4B99-BAED-F091A227ED62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KaizenBoardFront", "KaizenBoardFront\KaizenBoardFront.csproj", "{691830B9-A368-4B99-BAED-F091A227ED62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Contract\Contract.csproj", "{7EEAFB6C-0B68-433D-97A0-C47BBD3B6CB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contract", "Contract\Contract.csproj", "{7EEAFB6C-0B68-433D-97A0-C47BBD3B6CB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
