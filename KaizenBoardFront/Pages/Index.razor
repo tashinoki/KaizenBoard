@@ -30,7 +30,7 @@
         BaseAddress = new Uri("https://localhost:5001"),
     };
 
-    protected async override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
         var response = await _client.GetAsync("/kaizenboard");
         var content = await response.Content.ReadAsStringAsync();
