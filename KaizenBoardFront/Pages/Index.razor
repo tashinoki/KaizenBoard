@@ -2,24 +2,28 @@
 @using Contract.Entity
 @using Newtonsoft.Json;
 @using Newtonsoft.Json.Serialization;
+@using KaizenBoardFront.Components;
 
 <MudTabs Elevation="1" Rounded="true" PanelClass="pa-6">
-    @if(_kanbanBoards is null || _kanbanBoards.Count == 0)
+    @if (_kanbanBoards is null || _kanbanBoards.Count == 0)
     {
         <div>Pleasse add board</div>
-        return;
     }
-
-    @foreach (var board in _kanbanBoards)
+    else
     {
-        <MudTabPanel Text=@board.Title ToolTip="ToolTip One">
-            <MudText>@board.Title</MudText>
-        </MudTabPanel>
+        @foreach (var board in _kanbanBoards)
+        {
+            <MudTabPanel Text=@board.Title ToolTip="ToolTip One">
+                <MudText>@board.Title</MudText>
+            </MudTabPanel>
+        }
     }
 </MudTabs>
+<MudButton OnClick="Load">Load</MudButton>
+<KanbaBoard />
 @code
 {
-    private IReadOnlyList<KanbanBoard> _kanbanBoards;
+    public IReadOnlyList<KanbanBoard> _kanbanBoards;
 
     private static HttpClient _client = new HttpClient
     {
@@ -27,6 +31,19 @@
     };
 
     protected async override void OnInitialized()
+    {
+        var response = await _client.GetAsync("/kaizenboard");
+        var content = await response.Content.ReadAsStringAsync();
+        var member = JsonConvert.DeserializeObject<Member>(content);
+
+        _kanbanBoards = member.KanbanBoards;
+        foreach(var i in _kanbanBoards)
+        {
+            Console.WriteLine(i);
+        }
+    }
+
+    private async Task Load()
     {
         var response = await _client.GetAsync("/kaizenboard");
         var content = await response.Content.ReadAsStringAsync();

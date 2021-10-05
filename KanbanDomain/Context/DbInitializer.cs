@@ -9,6 +9,8 @@ namespace KanbanDomain.Context
     {
         public async static void Initialize(KanbanContext context)
         {
+            
+            
             context.Database.EnsureCreated();
 
             // Look for any students.
