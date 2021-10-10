@@ -31,7 +31,8 @@ namespace KanbanDomain.UseCases
         {
             var member = await _context.Members
                 .Select(m => m)
-                .Include(m => m.KanbanBoards)
+                .Include(m => m.KanbanBoards)  // ここの Orde By はどうやれば良いのだろうか
+                .ThenInclude(kb => kb.Kanbans)
                 .FirstOrDefaultAsync();
             return member;
         }

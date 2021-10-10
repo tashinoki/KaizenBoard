@@ -19,13 +19,6 @@ namespace KanbanDomain.Context
                 return;   // DB has been seeded
             }
 
-            var kanbanBoard = new KanbanBoard
-            {
-                Id = new Guid(),
-                Title = "サンプル",
-                Priority = 0,
-
-            };
             var kanban = new Kanban
             {
                 Id = new Guid(),
@@ -42,7 +35,23 @@ namespace KanbanDomain.Context
                 IsDeleted = false,
             };
 
+            var kanbanBoard = new KanbanBoard
+            {
+                Id = new Guid(),
+                Title = "サンプル",
+                Priority = 0,
+                Kanbans = new List<Kanban> { kanban, kanban2 }
+
+            };
+            var kanbanBoard2 = new KanbanBoard
+            {
+                Id = new Guid(),
+                Title = "KaizenBoard",
+                Priority = 1
+            };
+
             await context.KanbanBoards.AddAsync(kanbanBoard);
+            await context.KanbanBoards.AddAsync(kanbanBoard2);
             await context.Kanbans.AddAsync(kanban);
             await context.Kanbans.AddAsync(kanban2);
 
@@ -51,7 +60,7 @@ namespace KanbanDomain.Context
                 Id = new Guid(),
                 HandleName = "kino",
                 MemberId = "kino",
-                KanbanBoards = new List<KanbanBoard> { kanbanBoard },
+                KanbanBoards = new List<KanbanBoard> { kanbanBoard, kanbanBoard2 },
                 IsDeleted = false
             };
 

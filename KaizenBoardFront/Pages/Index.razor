@@ -1,7 +1,6 @@
 ﻿@page "/"
 @using Contract.Entity
 @using Newtonsoft.Json;
-@using Newtonsoft.Json.Serialization;
 @using KaizenBoardFront.Components;
 
 <MudButton Variant="Variant.Filled" Color="Color.Primary">Add Board</MudButton>
@@ -15,12 +14,13 @@
         @foreach (var board in _kanbanBoards)
         {
             <MudTabPanel Text=@board.Title ToolTip="ToolTip One">
-                <div>@board.Id</div>
+
+                <KanbansComponent Kanbans="@board.Kanbans" />
             </MudTabPanel>
         }
     }
 </MudTabs>
-<KanbaBoard />
+<SampleComponent Title="The Title" />
 @code
 {
     public IReadOnlyList<KanbanBoard> _kanbanBoards = null;
@@ -37,5 +37,10 @@
         var member = JsonConvert.DeserializeObject<Member>(content);
 
         _kanbanBoards = member.KanbanBoards;
+
+        foreach(var board in _kanbanBoards)
+        {
+            Console.WriteLine(board);
+        }
     }
 }
