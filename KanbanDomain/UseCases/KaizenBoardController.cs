@@ -30,7 +30,7 @@ namespace KanbanDomain.UseCases
         public async Task<Member> Get()
         {
             var member = await _context.Members
-                .Where(m => m.Id == new Guid(MemberId))
+                .Select(m => m)
                 .Include(m => m.KanbanBoards)
                 .FirstOrDefaultAsync();
             return member;

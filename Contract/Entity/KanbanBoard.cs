@@ -12,6 +12,8 @@ namespace Contract.Entity
 
         public string Title { get; set; }
 
+        public int Priority { get; set; }
+
         public IList<Kanban> Kanbans { get; set; }
 
         public IList<Member> Members { get; set; }

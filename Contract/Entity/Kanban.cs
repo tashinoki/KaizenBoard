@@ -10,7 +10,7 @@ namespace Contract.Entity
         
         public string Name { get; set; }
 
-        public int Priority { get; set; }
+        public int Sequence { get; set; }
 
         public bool IsDeleted { get; set; }
 

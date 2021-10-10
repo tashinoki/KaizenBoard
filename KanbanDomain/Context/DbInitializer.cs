@@ -23,13 +23,14 @@ namespace KanbanDomain.Context
             {
                 Id = new Guid(),
                 Title = "サンプル",
+                Priority = 0,
 
             };
             var kanban = new Kanban
             {
                 Id = new Guid(),
                 Name = "テスト",
-                Priority = 0,
+                Sequence = 0,
                 IsDeleted = false
             };
 
@@ -37,7 +38,7 @@ namespace KanbanDomain.Context
             {
                 Id = new Guid(),
                 Name = "KaizenBoard",
-                Priority = 1,
+                Sequence = 1,
                 IsDeleted = false,
             };
 

@@ -37,7 +37,7 @@ namespace KanbanDomain.Context
                 .IsRequired();
 
             modelBuilder.Entity<Kanban>()
-                .HasIndex(k => k.Priority)
+                .HasIndex(k => k.Sequence)
                 .IsUnique();
 
             modelBuilder.Entity<Member>()

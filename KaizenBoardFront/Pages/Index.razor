@@ -23,7 +23,7 @@
 <KanbaBoard />
 @code
 {
-    public IReadOnlyList<KanbanBoard> _kanbanBoards;
+    public IReadOnlyList<KanbanBoard> _kanbanBoards = null;
 
     private static HttpClient _client = new HttpClient
     {
