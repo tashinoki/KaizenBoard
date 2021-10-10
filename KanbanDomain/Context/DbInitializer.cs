@@ -29,12 +29,21 @@ namespace KanbanDomain.Context
             {
                 Id = new Guid(),
                 Name = "テスト",
-                Sequence = 0,
+                Priority = 0,
                 IsDeleted = false
+            };
+
+            var kanban2 = new Kanban
+            {
+                Id = new Guid(),
+                Name = "KaizenBoard",
+                Priority = 1,
+                IsDeleted = false,
             };
 
             await context.KanbanBoards.AddAsync(kanbanBoard);
             await context.Kanbans.AddAsync(kanban);
+            await context.Kanbans.AddAsync(kanban2);
 
             var member = new Member
             {

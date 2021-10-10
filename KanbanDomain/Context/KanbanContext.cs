@@ -36,6 +36,10 @@ namespace KanbanDomain.Context
                 .Property(k => k.Id)
                 .IsRequired();
 
+            modelBuilder.Entity<Kanban>()
+                .HasIndex(k => k.Priority)
+                .IsUnique();
+
             modelBuilder.Entity<Member>()
                 .Property(m => m.Id)
                 .IsRequired();
